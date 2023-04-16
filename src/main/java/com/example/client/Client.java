@@ -1,7 +1,5 @@
 package com.example.client;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -12,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-@SpringBootApplication
+
 public class Client {
 
 	public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class Client {
 		double maxTemperature = 45.0;
 		for (int i = 0; i < 500; i++) {
 			System.out.println(i);
-			sendMeasurement(random.nextDouble() * maxTemperature,
+			sendMeteodata(random.nextDouble() * maxTemperature,
 					random.nextBoolean(), sensorName);
 		}
 	}
@@ -40,7 +38,7 @@ public class Client {
 		makePostRequestWithJSONData(url, jsonData);
 	}
 
-	private static void sendMeasurement(double temperature, boolean is_rainy, String sensorName) {
+	private static void sendMeteodata(double temperature, boolean is_rainy, String sensorName) {
 		final String url = "http://localhost:8080/meteodata/add";
 
 		Map<String, Object> jsonData = new HashMap<>();
